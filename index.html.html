@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuentes Para Tatuajes, Dibujos y Decoraciones</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Black+Ops+One&family=Cinzel+Decorative&family=Gloria+Hallelujah&family=Great+Vibes&family=Kaushan+Script&family=Monoton&family=Pacifico&family=Press+Start+2P&family=Special+Elite&family=Tangerine:wght@700&family=Dancing+Script:wght@700&family=Staatliches&family=Abril+Fatface&family=Alfa+Slab+One&family=Bangers&family=Berkshire+Swash&family=Caveat:wght@700&family=Charm:wght@700&family=Courgette&family=Damion&family=Emilys+Candy&family=Finger+Paint&family=Fredericka+the+Great&family=Hanalei+Fill&family=Homemade+Apple&family=Italiana&family=Jim+Nightshade&family=Knewave&family=Libre+Baskerville:ital@1&family=MedievalSharp&family=Metamorphous&family=New+Rocker&family=Nothing+You+Could+Do&family=Oleo+Script:wght@700&family=Over+the+Rainbow&family=Qwigley&family=Rakkas&family=Ribeye+Marrow&family=Rouge+Script&family=Rye&family=Sacramento&family=Satisfy&family=Smokum&family=Sofia&family=UnifrakturMaguntia&display=swap');
+
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .tattoo-preview {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tattoo-preview::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9f11d468-2997-40ed-815f-9aa9130d06d3.png');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .font-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .font-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .font-option.active {
+            border: 2px solid #000;
+            background-color: #f0f0f0;
+        }
+
+        .download-btn {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        .color-picker {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .color-picker::-webkit-color-swatch {
+            border-radius: 50%;
+            border: 2px solid #000;
+        }
+
+        .color-picker::-moz-color-swatch {
+            border-radius: 50%;
+            border: 2px solid #000;
+        }
+
+        .tattoo-text {
+            transition: all 0.3s ease;
+            text-align: center;
+            word-break: break-word;
+        }
+
+        .controls-section {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin: 1rem auto;
+            max-width: 800px;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .font-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .font-category-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #444;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.3rem;
+        }
+
+        .font-options-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .font-options-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .font-options-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .font-options-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .font-options-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* 3D Text Effect */
+        .text-3d {
+            text-shadow:
+                1px 1px 0 #000,
+                2px 2px 0 #000,
+                3px 3px 0 #000,
+                4px 4px 0 #000;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .gradient-controls {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gradient-controls.active {
+            display: grid;
+        }
+
+        .gradient-direction {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body class="py-8">
+    <div class="container mx-auto px-4">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-2">fuentes para tatuajes, dibujos y decoraciones</h1>
+            <p class="text-gray-600">Crea diseños de tatuajes personalizados con diferentes fuentes y estilos.</p>
+        </header>
+
+        <div class="tattoo-preview">
+            <div id="tattooText" class="tattoo-text text-4xl">Tu texto aquí</div>
+        </div>
+
+        <div class="controls-section">
+            <span class="section-title">Ingrese su texto</span>
+            <input type="text" id="textInput" class="w-full p-2 border border-gray-300 rounded" placeholder="Escribe el texto de tu tatuaje aquí" value="Your Text Here">
+        </div>
+
+        <div class="controls-section">
+            <span class="section-title">Seleccionar estilo de fuente</span>
+            <div class="font-options-container">
+                <!-- Handwritten Styles -->
+                <div class="font-category">
+                    <div class="font-category-title">Estilos escritos a mano</div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Permanent Marker', cursive">
+                            <div style="font-family: 'Permanent Marker', cursive">Marcador permanente</div>
+                        </div>
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Gloria Hallelujah', cursive">
+                            <div style="font-family: 'Gloria Hallelujah', cursive">Gloria Aleluya</div>
+                        </div>
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Caveat', cursive">
+                            <div style="font-family: 'Caveat', cursive">Advertencia</div>
+                        </div>
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Homemade Apple', cursive">
+                            <div style="font-family: 'Homemade Apple', cursive">manzana casera</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bold & Gothic Styles -->
+                <div class="font-category">
+                    <div class="font-category-title">Negrita y gótico</div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Black Ops One', cursive">
+                            <div style="font-family: 'Black Ops One', cursive">Operaciones negras uno</div>
+                        </div>
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Alfa Slab One', cursive">
+                            <div style="font-family: 'Alfa Slab One', cursive">Losa Alfa Uno</div>
+                        </div>
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Staatliches', cursive">
+                            <div style="font-family: 'Staatliches', cursive">Staatliches</div>
+                        </div>
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Bangers', cursive">
+                            <div style="font-family: 'Bangers', cursive">salchichas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Elegant & Script -->
+                <div class="font-category">
+                    <div class="font-category-title">Elegante y guión</div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Cinzel Decorative', cursive">
+                            <div style="font-family: 'Cinzel Decorative', cursive">Cinzel Decorative</div>
+                        </div>
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Great Vibes', cursive">
+                            <div style="font-family: 'Great Vibes', cursive">Grandes vibraciones</div>
+                        </div>
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Dancing Script', cursive">
+                            <div style="font-family: 'Dancing Script', cursive">Guión de baile</div>
+                        </div>
+                        <div class="font-option p-4 border border-gray-200 rounded text-center" data-font="'Tangerine', cursive">
+                            <div style="font-family: 'Tangerine', cursive">Mandarina</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <span class="section-title">Personalizar la apariencia</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div>
+                    <label for="fontSize" class="block mb-2">Tamaño de fuente</label>
+                    <input type="range" id="fontSize" min="12" max="120" value="36" class="w-full">
+                    <span id="fontSizeValue" class="text-sm text-gray-500">36px</span>
+                </div>
+                <div>
+                    <label class="block mb-2">Color del texto</label>
+                    <div class="flex items-center space-x-4">
+                        <div>
+                            <input type="radio" id="colorTypeSolid" name="colorType" value="solid" checked class="mr-2">
+                            <label for="colorTypeSolid">Sólida</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="colorTypeGradient" name="colorType" value="gradient" class="mr-2">
+                            <label for="colorTypeGradient">Gradiente</label>
+                        </div>
+                    </div>
+                    <div id="solidColorContainer">
+                        <input type="color" id="textColor" value="#000000" class="color-picker mt-2">
+                    </div>
+                    <div id="gradientControls" class="gradient-controls">
+                        <input type="color" id="gradientColor1" value="#ff0000" class="color-picker">
+                        <input type="color" id="gradientColor2" value="#0000ff" class="color-picker">
+                        <select id="gradientDirection" class="gradient-direction p-2 border border-gray-300 rounded">
+                            <option value="to right">Horizontal</option>
+                            <option value="to bottom">Vertical</option>
+                            <option value="to right bottom">Diagonal</option>
+                            <option value="to left bottom">Diagonal inversa</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="textRotation" class="block mb-2">Rotación de texto</label>
+                    <input type="range" id="textRotation" min="-45" max="45" value="0" class="w-full">
+                    <span id="textRotationValue" class="text-sm text-gray-500">0°</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <label for="letterSpacing" class="block mb-2">Espaciado entre letras</label>
+                    <input type="range" id="letterSpacing" min="-5" max="20" value="0" class="w-full">
+                    <span id="letterSpacingValue" class="text-sm text-gray-500">0px</span>
+                </div>
+                <div>
+                    <label for="textStyle" class="block mb-2">Estilo de texto</label>
+                    <select id="textStyle" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="normal">Normal</option>
+                        <option value="italic">Itálico</option>
+                        <option value="bold">Negrito</option>
+                        <option value="bold italic">Negrita cursiva</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <label class="block mb-2">Efecto 3D</label>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="text3d" class="mr-2">
+                        <label for="text3d">Habilitar efecto 3D</label>
+                    </div>
+                </div>
+                <div id="depthControl" style="display: none;">
+                    <label for="depthAmount" class="block mb-2">Profundidad 3D</label>
+                    <input type="range" id="depthAmount" min="1" max="10" value="4" class="w-full">
+                    <span id="depthAmountValue" class="text-sm text-gray-500">4px</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-section text-center">
+            <button id="downloadBtn" class="download-btn px-6 py-3">Descargar Diseño</button>
+        </div>
+
+        <div class="mt-8 text-center text-gray-500 text-sm">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const textInput = document.getElementById('textInput');
+            const tattooText = document.getElementById('tattooText');
+            const fontOptions = document.querySelectorAll('.font-option');
+            const fontSize = document.getElementById('fontSize');
+            const fontSizeValue = document.getElementById('fontSizeValue');
+            const textColor = document.getElementById('textColor');
+            const textRotation = document.getElementById('textRotation');
+            const textRotationValue = document.getElementById('textRotationValue');
+            const letterSpacing = document.getElementById('letterSpacing');
+            const letterSpacingValue = document.getElementById('letterSpacingValue');
+            const textStyle = document.getElementById('textStyle');
+            const text3d = document.getElementById('text3d');
+            const depthAmount = document.getElementById('depthAmount');
+            const depthAmountValue = document.getElementById('depthAmountValue');
+            const depthControl = document.getElementById('depthControl');
+            const colorTypeSolid = document.getElementById('colorTypeSolid');
+            const colorTypeGradient = document.getElementById('colorTypeGradient');
+            const solidColorContainer = document.getElementById('solidColorContainer');
+            const gradientControls = document.getElementById('gradientControls');
+            const gradientColor1 = document.getElementById('gradientColor1');
+            const gradientColor2 = document.getElementById('gradientColor2');
+            const gradientDirection = document.getElementById('gradientDirection');
+            const downloadBtn = document.getElementById('downloadBtn');
+
+            let currentFont = "'Permanent Marker', cursive";
+
+            // Initialize first font as active
+            fontOptions[0].classList.add('active');
+
+            // Event Listeners
+            textInput.addEventListener('input', function() {
+                tattooText.textContent = this.value || 'Your Text Here';
+                updateTextStyles(); // Added this line to update styles when text changes
+            });
+
+            fontOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    fontOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFont = this.dataset.font;
+                    updateTextStyles();
+                });
+            });
+
+            fontSize.addEventListener('input', function() {
+                fontSizeValue.textContent = `${this.value}px`;
+                updateTextStyles();
+            });
+
+            textColor.addEventListener('input', updateTextStyles);
+            textRotation.addEventListener('input', function() {
+                textRotationValue.textContent = `${this.value}°`;
+                updateTextStyles();
+            });
+
+            letterSpacing.addEventListener('input', function() {
+                letterSpacingValue.textContent = `${this.value}px`;
+                updateTextStyles();
+            });
+
+            textStyle.addEventListener('change', updateTextStyles);
+            text3d.addEventListener('change', toggle3dEffect);
+            depthAmount.addEventListener('input', update3dDepth);
+            colorTypeSolid.addEventListener('change', toggleColorType);
+            colorTypeGradient.addEventListener('change', toggleColorType);
+            gradientColor1.addEventListener('input', updateTextStyles);
+            gradientColor2.addEventListener('input', updateTextStyles);
+            gradientDirection.addEventListener('change', updateTextStyles);
+            downloadBtn.addEventListener('click', downloadDesign);
+
+            // Functions
+            function toggle3dEffect() {
+                if (this.checked) {
+                    depthControl.style.display = 'block';
+                    tattooText.classList.add('text-3d');
+                } else {
+                    depthControl.style.display = 'none';
+                    tattooText.classList.remove('text-3d');
+                }
+                update3dDepth();
+            }
+
+            function update3dDepth() {
+                const depth = depthAmount.value;
+                depthAmountValue.textContent = `${depth}px`;
+
+                if (text3d.checked) {
+                    let shadow = '';
+                    for (let i = 1; i <= depth; i++) {
+                        shadow += `${i}px ${i}px 0 #000${i < depth ? ',' : ''}`;
+                    }
+                    tattooText.style.textShadow = shadow;
+                } else {
+                    tattooText.style.textShadow = 'none';
+                }
+            }
+
+            function toggleColorType() {
+                if (colorTypeSolid.checked) {
+                    solidColorContainer.style.display = 'block';
+                    gradientControls.classList.remove('active');
+                    tattooText.classList.remove('gradient-text');
+                } else {
+                    solidColorContainer.style.display = 'none';
+                    gradientControls.classList.add('active');
+                    tattooText.classList.add('gradient-text');
+                }
+                updateTextStyles();
+            }
+
+            function updateTextStyles() {
+                // Font family and size
+                tattooText.style.fontFamily = currentFont;
+                tattooText.style.fontSize = `${fontSize.value}px`;
+
+                // Text rotation
+                tattooText.style.transform = `rotate(${textRotation.value}deg)`;
+
+                // Letter spacing
+                tattooText.style.letterSpacing = `${letterSpacing.value}px`;
+
+                // Font style (normal, italic, bold)
+                switch(textStyle.value) {
+                    case 'italic':
+                        tattooText.style.fontStyle = 'italic';
+                        tattooText.style.fontWeight = 'normal';
+                        break;
+                    case 'bold':
+                        tattooText.style.fontStyle = 'normal';
+                        tattooText.style.fontWeight = 'bold';
+                        break;
+                    case 'bold italic':
+                        tattooText.style.fontStyle = 'italic';
+                        tattooText.style.fontWeight = 'bold';
+                        break;
+                    default:
+                        tattooText.style.fontStyle = 'normal';
+                        tattooText.style.fontWeight = 'normal';
+                }
+
+                // Handle color type
+                if (colorTypeSolid.checked) {
+                    tattooText.style.color = textColor.value;
+                    tattooText.style.backgroundImage = 'none';
+                } else {
+                    const gradient = `linear-gradient(${gradientDirection.value}, ${gradientColor1.value}, ${gradientColor2.value})`;
+                    tattooText.style.backgroundImage = gradient;
+                }
+            }
+
+            function downloadDesign() {
+                // Create canvas
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const preview = document.querySelector('.tattoo-preview');
+
+                // Set canvas dimensions
+                canvas.width = preview.offsetWidth;
+                canvas.height = preview.offsetHeight;
+
+                // Draw background
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Prepare text styles
+                let fontStyle = '';
+                if (textStyle.value.includes('italic')) fontStyle += 'italic ';
+                if (textStyle.value.includes('bold')) fontStyle += 'bold ';
+
+                ctx.font = `${fontStyle}${fontSize.value}px ${currentFont}`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.letterSpacing = `${letterSpacing.value}px`;
+
+                // Handle color
+                if (colorTypeSolid.checked) {
+                    ctx.fillStyle = textColor.value;
+                } else {
+                    // For gradients, create a gradient object
+                    let gradient;
+                    switch(gradientDirection.value) {
+                        case 'to right':
+                            gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                            break;
+                        case 'to bottom':
+                            gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                            break;
+                        case 'to right bottom':
+                            gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                            break;
+                        case 'to left bottom':
+                            gradient = ctx.createLinearGradient(canvas.width, 0, 0, canvas.height);
+                            break;
+                    }
+                    gradient.addColorStop(0, gradientColor1.value);
+                    gradient.addColorStop(1, gradientColor2.value);
+                    ctx.fillStyle = gradient;
+                }
+
+                // Handle 3D effect
+                if (text3d.checked) {
+                    const depth = depthAmount.value;
+                    ctx.save();
+                    ctx.translate(canvas.width / 2, canvas.height / 2);
+                    ctx.rotate(textRotation.value * Math.PI / 180);
+
+                    // Draw shadow layers first
+                    ctx.fillStyle = '#000';
+                    for (let i = 1; i <= depth; i++) {
+                        ctx.fillText(textInput.value || 'Your Text Here', i, i);
+                    }
+
+                    // Draw main text on top
+                    if (colorTypeSolid.checked) {
+                        ctx.fillStyle = textColor.value;
+                    } else {
+                        let gradient;
+                        switch(gradientDirection.value) {
+                            case 'to right':
+                                gradient = ctx.createLinearGradient(-canvas.width/4, 0, canvas.width/4, 0);
+                                break;
+                            case 'to bottom':
+                                gradient = ctx.createLinearGradient(0, -canvas.height/4, 0, canvas.height/4);
+                                break;
+                            case 'to right bottom':
+                                gradient = ctx.createLinearGradient(-canvas.width/4, -canvas.height/4, canvas.width/4, canvas.height/4);
+                                break;
+                            case 'to left bottom':
+                                gradient = ctx.createLinearGradient(canvas.width/4, -canvas.height/4, -canvas.width/4, canvas.height/4);
+                                break;
+                        }
+                        gradient.addColorStop(0, gradientColor1.value);
+                        gradient.addColorStop(1, gradientColor2.value);
+                        ctx.fillStyle = gradient;
+                    }
+                    ctx.fillText(textInput.value || 'Your Text Here', 0, 0);
+                    ctx.restore();
+                } else {
+                    // No 3D effect
+                    ctx.save();
+                    ctx.translate(canvas.width / 2, canvas.height / 2);
+                    ctx.rotate(textRotation.value * Math.PI / 180);
+                    ctx.fillText(textInput.value || 'Your Text Here', 0, 0);
+                    ctx.restore();
+                }
+
+                // Create download link
+                const link = document.createElement('a');
+                link.download = 'tattoo-design.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }
+
+            // Initialize
+            updateTextStyles();
+        });
+    </script>
+</body>
+</html>
